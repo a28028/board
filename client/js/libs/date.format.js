@@ -26,7 +26,7 @@ var dateFormat = function () {
   // Regexes and supporting functions are cached through closure
   return function (date, mask, utc) {
     //TODO:  convert by mask
-    console.log([date, mask, utc, window.i18next.language]);
+    //console.log([date, mask, utc, window.i18next.language]);
     if (window.i18next.language == "fa_IR") {
       //console.log(moment(date, 'YYYY/MM/DD').locale('fa').format('YYYY/MM/DD'));
       return moment(date, 'YYYY/MM/DD').locale('fa').format('YYYY/MM/DD');

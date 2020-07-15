@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html class="no-js" lang="en" dir="rtl">
+<html class="no-js" lang="en">
 
 <head>
     <meta charset="utf-8">
@@ -31,24 +31,28 @@
     <link rel="apple-touch-icon" sizes="114x114" href="apple-touch-icon-114x114.png">
     <link rel="icon" sizes="192x192" href="img/logo-192x192.png">
     <script>
-        window.checkLanguage = function(){
-            if(window.i18next.dir() == "ltr"){
-                var head = document.getElementsByTagName('HEAD')[0];  
+        window.checkLanguage = function () {
+            if (window.i18next.dir() == "ltr") {
+                $("html").attr("dir", "rtl")
+                var head = document.getElementsByTagName('HEAD')[0];
                 // Create new link Element 
-                var link = document.createElement('link'); 
+                var link = document.createElement('link');
                 // set the attributes for link element  
-                link.id='bootstrapRtl';
-                link.rel = 'stylesheet';  
-                link.type = 'text/css'; 
-                link.href = './css/rtl/bootstrap/rtl.css';  
+                link.id = 'bootstrapRtl';
+                link.rel = 'stylesheet';
+                link.type = 'text/css';
+                link.href = './css/rtl/bootstrap/rtl.css';
                 // Append link element to HTML head 
-                head.appendChild(link);  
+                head.appendChild(link);
+            }
+            else{
+                $("html").attr("dir", "");
             }
         }
     </script>
 </head>
 
-<body style="cursor: auto" class="rtlEnable">
+<body style="cursor: auto">
     <div id="main" class="content">
         <div class="wrapper">
             <header id="header" class="clearfix">
@@ -69,7 +73,7 @@
     </script>
     <script>
         window.addEventListener('load', function (e) {
-           
+
             if (window.applicationCache) {
                 window.applicationCache.addEventListener('updateready', function (e) {
                     if (window.applicationCache.status == window.applicationCache.UPDATEREADY) {
@@ -418,8 +422,8 @@
     <script src="./js/application.js"></script>
     <!-- endbuild -->
     <script>
-        $(function() {
-        // window.checkLanguage();
+        $(function () {
+            // window.checkLanguage();
         });
     </script>
 </body>
