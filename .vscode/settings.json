@@ -1,0 +1,23 @@
+{
+    "intelephense.files.exclude": [
+        "**/.git/**",
+        "**/.svn/**",
+        "**/.hg/**",
+        "**/CVS/**",
+        "**/.DS_Store/**",
+        "**/node_modules/**",
+        "**/bower_components/**",
+        "**/vendor/**/{Tests,tests}/**",
+        "**/.history/**",
+        "**/vendor/**",
+        "**/dist/**"
+    ],
+    "search.exclude": {
+        "**/dist/**": true,
+        "dist": true
+    },
+    "files.exclude": {
+        "**/dist": true,
+        "dist": true
+    }
+}

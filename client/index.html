@@ -10,7 +10,7 @@
     <!--[if lt IE 9]><script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.6.1/html5shiv.js"></script><![endif]-->
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1">
-    <meta name="theme-color" content="#f47564">
+    <meta name="theme-color" content="#23719f">
     <link rel="manifest" href="manifest.json">
     <link href="//fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet" type="text/css">
     <!-- build:css css/default.cache.css -->
@@ -69,7 +69,7 @@
     </script>
     <script>
         window.addEventListener('load', function (e) {
-            window.checkLanguage();
+           
             if (window.applicationCache) {
                 window.applicationCache.addEventListener('updateready', function (e) {
                     if (window.applicationCache.status == window.applicationCache.UPDATEREADY) {
@@ -149,6 +149,7 @@
     <script src="./js/libs/jquery.ui.touch-punch.js"></script>
     <script src="./js/libs/moment.js"></script>
     <script src="./js/libs/moment-timezone.js"></script>
+    <script src="./js/libs/jalali-moment-3-3-8-browser.js"></script>
     <script src="./js/libs/moment-timezone-with-data.js"></script>
     <script src="./js/libs/bootstrap-colorpicker.js"></script>
     <script src="./js/models/oauth.js"></script>
@@ -416,6 +417,11 @@
     <script src="./js/filterUtility.js"></script>
     <script src="./js/application.js"></script>
     <!-- endbuild -->
+    <script>
+        $(function() {
+        // window.checkLanguage();
+        });
+    </script>
 </body>
 
 </html>

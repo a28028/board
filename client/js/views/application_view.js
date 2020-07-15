@@ -154,6 +154,7 @@ App.ApplicationView = Backbone.View.extend({
                                         loadPath: "locales/{{lng}}/{{ns}}.json"
                                     }
                                 }, function() {
+                                    window.checkLanguage();
                                     if (page.model === "admin_user_add" || page.model === "register") {
                                         //@Todo
                                         page.call_function();
@@ -281,6 +282,7 @@ App.ApplicationView = Backbone.View.extend({
                                     loadPath: "locales/{{lng}}/{{ns}}.json"
                                 }
                             }, function() {
+                                window.checkLanguage();
                                 if (page.model === "admin_user_add" || page.model === "register") {
                                     //@Todo
                                     page.call_function();
@@ -292,6 +294,7 @@ App.ApplicationView = Backbone.View.extend({
                         }
                     });
                 } else {
+                    window.checkLanguage();
                     if (page.model === "admin_user_add" || page.model === "register") {
                         //@Todo
                         page.call_function();

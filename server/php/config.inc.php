@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Core configurations
  *
@@ -42,7 +43,7 @@ if (isset($_SERVER['PHP_AUTH_USER']) && isset($_SERVER['PHP_AUTH_PW'])) {
     define('OAUTH_CLIENT_SECRET', '4g7C4l1Y2b0S6a7L8c1E7B3K0e');
 }
 if (getenv('PLATFORM_RELATIONSHIPS')) {
-    $relationships = json_decode(base64_decode(getenv('PLATFORM_RELATIONSHIPS')) , true);
+    $relationships = json_decode(base64_decode(getenv('PLATFORM_RELATIONSHIPS')), true);
     if (!empty($relationships['database'])) {
         foreach ($relationships['database'] as $endpoint) {
             define('R_DB_HOST', $endpoint['host']);
@@ -54,11 +55,17 @@ if (getenv('PLATFORM_RELATIONSHIPS')) {
         }
     }
 } else {
-    define('R_DB_HOST', 'localhost');
+    /* define('R_DB_HOST', 'localhost');
     define('R_DB_USER', 'restya');
     define('R_DB_PASSWORD', 'hjVl2!rGd');
     define('R_DB_NAME', 'restyaboard');
     define('R_DB_PORT', 5432);
+    */
+    define('R_DB_HOST',  '127.0.0.1'); //'10.0.0.133');
+    define('R_DB_USER', 'restya');
+    define('R_DB_PASSWORD', 'hjVl2!rGd');
+    define('R_DB_NAME', 'restyaboard');
+    define('R_DB_PORT', '55432');
 }
 define('SECURITYSALT', 'e9a556134534545ab47c6c81c14f06c0b8sdfsdf');
 define('SITE_LICENSE_KEY', 'REPLACE YOUR LICENCE HERE');
@@ -82,17 +89,17 @@ $thumbsizes = array(
         'small_thumb' => '32x32',
         'normal_thumb' => '64x64',
         'medium_thumb' => '153x153'
-    ) ,
+    ),
     'Organization' => array(
         'medium_thumb' => '153x153',
         'small_thumb' => '32x32'
-    ) ,
+    ),
     'Board' => array(
         'micro_thumb' => '16x16',
         'small_thumb' => '32x32',
         'medium_thumb' => '153x153',
         'extra_large_thumb' => '2000x1263'
-    ) ,
+    ),
     'CardAttachment' => array(
         'small_thumb' => '108x78',
         'medium_thumb' => '153x153',
