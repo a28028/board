@@ -1,3 +1,8 @@
+<%  
+var pull_left =  $('html').attr('dir') === 'rtl' ? 'pull-right': 'pull-left';
+var pull_right = $('html').attr('dir') === 'rtl' ? 'pull-left': 'pull-right';
+var dropdown_menu_class =  $('html').attr('dir') === 'rtl' ? "dropdown-menu arrow arrow-left": "dropdown-menu arrow arrow-right"; 
+ %>
 <div class="navbar navbar-default" role="navigation">
 	<div class="container-fluid">
 		<div class="row">
@@ -5,7 +10,7 @@
 				class="header_innr_a navbar-left navbar-btn mob-no-mar col-sm-11 col-xs-10 nav <% if(board.attributes.organization_id == 0) { %> col-lg-6 col-md-5 <% } else { %> col-lg-5 col-md-4<% } %>">
 				<div class="clearfix row-flex">
 					<ul
-						class="nav nav-pills pull-left col-flex col-flex1 <% if(board.attributes.organization_id == 0) { %> hide <% } %>">
+						class="nav nav-pills <%= pull_left %> col-flex col-flex1 <% if(board.attributes.organization_id == 0) { %> hide <% } %>">
 						<% if(board.attributes.organization_id != 0) {
 							var is_orgnaization_member = [];
 							if (!_.isUndefined(board.attributes.organization_users) && !_.isEmpty(board.attributes.organization_users) && board.attributes.organization_users !== null && !_.isUndefined(authuser) && !_.isEmpty(authuser) && authuser !== null) { 
@@ -16,7 +21,7 @@
 						<li>
 							<% if(is_orgnaization_member !== 0 || parseInt(board.attributes.organization_visibility) === 1 || (!_.isUndefined(authuser) && !_.isEmpty(authuser) && authuser !== null && parseInt(authuser.user.role_id) === 1)) { %>
 							<a href="#/organization/<%= board.attributes.organization_id %>"
-								class="hdrorganization text-muted btn btn-link pull-left htruncate col-lg-10 col-sm-10 col-md-9 col-xs-9 nav"
+								class="hdrorganization text-muted btn btn-link <%= pull_left %> htruncate col-lg-10 col-sm-10 col-md-9 col-xs-9 nav"
 								title="<%- board.attributes.organization_name %>">
 								<%
 									var logo_path = "img/default-organization.png"; 
@@ -31,36 +36,36 @@
 							</a>
 							<% } else if (parseInt(board.attributes.organization_visibility) === 2) { %>
 							<a href="javascript:void(0);"
-								class="hdrorganization text-muted btn btn-link pull-left htruncate col-lg-10 col-sm-10 col-md-9 col-xs-9 nav"
+								class="hdrorganization text-muted btn btn-link <%= pull_left %> htruncate col-lg-10 col-sm-10 col-md-9 col-xs-9 nav"
 								title="<%- i18next.t('Private Organization') %>"><strong><%- i18next.t('Private Organization') %></strong></a>
 							<% } %>
-							<span class="navbar-btn mob-no-mar pull-left icon"><span
-									class="orgseperator navbar-btn pull-left">|</span></span>
+							<span class="navbar-btn mob-no-mar <%= pull_left %> icon"><span
+									class="orgseperator navbar-btn <%= pull_left %>">|</span></span>
 						</li>
 						<% } %>
 					</ul>
 					<div
-						class="navbar-btn pull-left mob-no-mar list-group-item-text col-flex <% if(board.attributes.organization_id != 0) { %> col-flex2 <% } else { %> col-flex3  <% } %>">
+						class="navbar-btn <%= pull_left %> mob-no-mar list-group-item-text col-flex <% if(board.attributes.organization_id != 0) { %> col-flex2 <% } else { %> col-flex3  <% } %>">
 						<form name="BoardStarForm" id="BoardStarForm">
 							<input id="inputBoardStar" name="is_starred" type="hidden"
 								value="<%if(!_.isUndefined(star)) {%><%- star.attributes.is_starred %><%}else{%>0<%}%>"> 
 							</form>
-						<div class="col-xs-12 pull-left navbar-btn list-group-item-text <% if(!_.isUndefined(authuser.user) && (authuser.user.role_id == 1 ||  !_.isEmpty(board.acl_links.where({slug: 'edit_board',board_user_role_id: parseInt(board.board_user_role_id)})))) { %>dropdown<% } %>">
+						<div class="col-xs-12 <%= pull_left %> navbar-btn list-group-item-text <% if(!_.isUndefined(authuser.user) && (authuser.user.role_id == 1 ||  !_.isEmpty(board.acl_links.where({slug: 'edit_board',board_user_role_id: parseInt(board.board_user_role_id)})))) { %>dropdown<% } %>">
 							<% if(!_.isEmpty(role_links.where({slug: "starred_board"}))){ %>
 							<% if(!_.isUndefined(star) && (parseInt(star.attributes.is_starred) === 1)) { %>
 							<% if (window.i18next.dir() == "ltr") {%>
-							<a href="#" class="js-star-board pull-right" name="unstar" title="
+							<a href="#" class="js-star-board <%= pull_left %>" name="unstar" title="
 								<% } else {  %>
-									<a href=" #" class="js-star-board pull-left" name="unstar" title="
+									<a href=" #" class="js-star-board <%= pull_left %>" name="unstar" title="
 									<% } %>
 	<%- i18next.t('Unstar') %>"><i class="icon-star text-primary"></i></a>
 							<% } else { %>
-							<a href="#" class="js-star-board pull-left" name="star" title="
+							<a href="#" class="js-star-board <%= pull_left %>" name="star" title="
 	<%- i18next.t('Star') %>"><i class="icon-star-empty"></i></a>
 							<% } %>
 							<% } %>
-							<a href="#" class="js-star-load pull-left text-primary hide"><img src="img/star-load.gif"
-									alt="[Images: Star]" title="
+							<a href="#" class="js-star-load <%= pull_left %> text-primary hide"><img
+									src="img/star-load.gif" alt="[Images: Star]" title="
 	<%- i18next.t('Star') %>"></a><a href="#"
 								class="col-xs-10 js-board-name-truncate nav htruncate <%if(!_.isUndefined(authuser.user)) {%>js-rename-board<%}else{%>js-no-action<%}%>" data-toggle="<% if(!_.isUndefined(authuser.user) && (authuser.user.role_id == 1 || !_.isEmpty(board.acl_links.where({slug: 'edit_board',board_user_role_id: parseInt(board.board_user_role_id)})))) { %>dropdown<% } %>"
 								title="<%- board.attributes.name %>"><strong><%- board.attributes.name %></strong></a>
@@ -71,7 +76,8 @@
 									<div class="clearfix text-center col-xs-12">
 										<span class="col-xs-10"><strong>
 												<%- i18next.t('Rename Board') %></strong></span><a
-											class="js-close-popover pull-right" href="#"><i class="icon-remove"></i></a>
+											class="js-close-popover <%= pull_right %>" href="#"><i
+												class="icon-remove"></i></a>
 									</div>
 									<div class="col-xs-12 divider"></div>
 									<div class="col-xs-12 text-left">
@@ -102,13 +108,13 @@
 					class="icon-bar"></span> <span class="icon-bar"></span> </button></div>
 		<nav class="navbar-collapse collapse mob-no-pad">
 			<div class="navbar-right">
-				<div class="btn-group pull-left js-clear-filter-btn hide">
+				<div class="btn-group <%= pull_left %> js-clear-filter-btn hide">
 					<button type="button" class="btn btn-default"><%- i18next.t('Clear Filter') %></button>
 					<button type="button" class="btn btn-primary">
 						<span class="icon-remove cur"></span>
 					</button>
 				</div>
-				<ul class="nav nav-pills pull-left pillsuser-list right-mar  headernav_rgtusr">
+				<ul class="nav nav-pills <%= pull_left %> pillsuser-list right-mar  headernav_rgtusr">
 					<li class="dropdown"> <a href="javascript:void(0);" data-toggle="dropdown"
 							class="dropdown-toggle show clearfix navbar-btn h4">
 							<% 
@@ -118,7 +124,7 @@
 					_.each(board.admin_board_users, function(admin_board_user){ 
 					if(i <= 3){
 					%>
-							<span class="pull-left btn-xs nav">
+							<span class="<%= pull_left %> btn-xs nav">
 								<span class="col-xs-12 btn-block"
 									title="<%-admin_board_user.attributes.full_name %> (<%-admin_board_user.attributes.username %>)">
 									<% if(!_.isEmpty(admin_board_user.attributes.profile_picture_path)) {
@@ -152,7 +158,7 @@
 						mobHidden = 'hidden-xs';
 					}
 					%>
-							<span class="pull-left btn-xs nav <%- mobHidden %>">
+							<span class="<%= pull_left %> btn-xs nav <%- mobHidden %>">
 								<span class="col-xs-12 btn-block"
 									title="<%-normal_board_user.attributes.full_name %> (<%-normal_board_user.attributes.username %>)">
 									<% if(!_.isEmpty(normal_board_user.attributes.profile_picture_path)) {
@@ -184,7 +190,7 @@
 							class="list-unstyled js-visibility-chooser dropdown-menu-left dropdown-menu arrow arrow-left">
 							<li class="text-center">
 								<strong><%- i18next.t('Members') %></strong>
-								<span href="#" class="js-close-popover pull-right col-xs-2"><i
+								<span href="#" class="js-close-popover <%= pull_right %> col-xs-2"><i
 										class="icon-remove cur"></i></span>
 							</li>
 							<li class="divider"></li>
@@ -202,7 +208,7 @@
 													<div class="col-xs-12 text-center clearfix">
 														<span
 															class="col-xs-10"><strong><%- i18next.t('Members') %></strong></span><a
-															class="js-close-popover-board-member-dropdown pull-right"
+															class="js-close-popover-board-member-dropdown <%= pull_right %>"
 															href="#"><i class="icon-remove"></i></a>
 													</div>
 													<div class="col-xs-12 divider"></div>
@@ -237,7 +243,7 @@
 						</ul>
 					</li>
 				</ul>
-				<ul class="nav nav-pills pull-left hdrpvtvws">
+				<ul class="nav nav-pills <%= pull_left %> hdrpvtvws">
 					<% if(!_.isUndefined(authuser.user) && (authuser.user.role_id == 1 || !_.isEmpty(board.acl_links.where({slug: "edit_board", board_user_role_id: parseInt(board.board_user_role_id)})))) { %>
 					<li>
 						<div class="btn-group navbar-btn js-visibility-list-dropdown dropdown">
@@ -263,13 +269,14 @@
 								<span><i class="icon-caret-down cur"></i></span> <span
 									class="sr-only"><%- i18next.t('Toggle Dropdown') %></span> </button>
 
-							<ul class="dropdown-menu arrow arrow-right col-xs-push-0">
+							<ul class="<%= dropdown_menu_class %> col-xs-push-0">
 								<li class="js-visibility-popup js-dropdown-popup dropdown-popup col-xs-12">
 									<div class="clearfix text-center"><a
-											class="js-back-to-board-visibility hide pull-left"
+											class="js-back-to-board-visibility hide <%= pull_left %>"
 											href="javascript:void(0);"><i class="icon-caret-left"></i></a><span
 											class="col-xs-10"><strong><%- i18next.t('Change Visibility') %></strong></span><a
-											class="js-close-popover pull-right" href="#"><i class="icon-remove"></i></a>
+											class="js-close-popover <%= pull_right %>" href="#"><i
+												class="icon-remove"></i></a>
 									</div>
 								</li>
 								<li class="col-xs-12 divider js-visibility-list"></li>
@@ -311,11 +318,11 @@
 							title="<%- i18next.t('Calendar') %>" data-placement="bottom" data-toggle="tooltip"><i
 								class="icon-calendar"></i></a></li>
 				</ul>
-				<div class="pull-right dropdown">
+				<div class="<%= pull_right %> dropdown">
 					<a data-toggle="dropdown"
 						class="navbar-btn icon h4 btn btn-primary dropdown-toggle js-back-setting-response col-sm-offset-1 show js-show-board-actions"
 						type="button"><i class="icon-cog h3 cur"></i></a>
-					<ul class="dropdown-menu arrow arrow-right col-xs-12 js-setting-response">
+					<ul class="<%= dropdown_menu_class %>  js-setting-response">
 						<!-- <li class="js-sync-google-dropdown inner-dropdown js-invite-users"><a data-toggle="dropdown" href="#" class="js-invite-users"><span class="icon-sm icon-user icon-type"></span> <%- i18next.t('Invite') %>
 								</a></li> -->
 						<li class="js-list-form"><a class="nav-list-item js-show-filters" href="#"><span
@@ -412,7 +419,7 @@
 									<div class="clearfix text-center col-xs-12">
 										<span
 											class="col-xs-10"><strong><%- i18next.t('Close Board') %></strong></span><a
-											class="js-close-sub-popover pull-right" href="#"><i
+											class="js-close-sub-popover <%= pull_right %>" href="#"><i
 												class="icon-remove"></i></a>
 									</div>
 									<div class="col-xs-12 divider"></div>
@@ -443,7 +450,7 @@
 	<section id="broadcast_information" class="hide hidden-xs">
 	</section>
 	<section id="broadcast_hide_arrow" class="hide hidden-xs">
-		<a href="#" class="broadcast-content-show js-broadcast-show pull-right" title="show">
+		<a href="#" class="broadcast-content-show js-broadcast-show <%= pull_right %>" title="show">
 			<i class="icon-angle-down"></i>
 		</a>
 	</section>
