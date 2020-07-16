@@ -53,11 +53,7 @@ var dropdown_menu_class =  $('html').attr('dir') === 'rtl' ? "dropdown-menu arro
 						<div class="col-xs-12 <%= pull_left %> navbar-btn list-group-item-text <% if(!_.isUndefined(authuser.user) && (authuser.user.role_id == 1 ||  !_.isEmpty(board.acl_links.where({slug: 'edit_board',board_user_role_id: parseInt(board.board_user_role_id)})))) { %>dropdown<% } %>">
 							<% if(!_.isEmpty(role_links.where({slug: "starred_board"}))){ %>
 							<% if(!_.isUndefined(star) && (parseInt(star.attributes.is_starred) === 1)) { %>
-							<% if (window.i18next.dir() == "ltr") {%>
 							<a href="#" class="js-star-board <%= pull_left %>" name="unstar" title="
-								<% } else {  %>
-									<a href=" #" class="js-star-board <%= pull_left %>" name="unstar" title="
-									<% } %>
 	<%- i18next.t('Unstar') %>"><i class="icon-star text-primary"></i></a>
 							<% } else { %>
 							<a href="#" class="js-star-board <%= pull_left %>" name="star" title="
@@ -70,7 +66,7 @@ var dropdown_menu_class =  $('html').attr('dir') === 'rtl' ? "dropdown-menu arro
 								class="col-xs-10 js-board-name-truncate nav htruncate <%if(!_.isUndefined(authuser.user)) {%>js-rename-board<%}else{%>js-no-action<%}%>" data-toggle="<% if(!_.isUndefined(authuser.user) && (authuser.user.role_id == 1 || !_.isEmpty(board.acl_links.where({slug: 'edit_board',board_user_role_id: parseInt(board.board_user_role_id)})))) { %>dropdown<% } %>"
 								title="<%- board.attributes.name %>"><strong><%- board.attributes.name %></strong></a>
 							<% if(!_.isUndefined(authuser.user) && (authuser.user.role_id == 1 || !_.isEmpty(board.acl_links.where({slug: "edit_board",board_user_role_id: parseInt(board.board_user_role_id)})))) { %>
-							<% var class_dropdown_menu = (window.i18next.dir() == "ltr") ? "dropdown-menu dropdown-menu-right arrow arrow-right" : "dropdown-menu dropdown-menu-left arrow arrow-left"; %>
+							<% var class_dropdown_menu = (window.dir() == "rtl") ? "dropdown-menu dropdown-menu-right arrow arrow-right" : "dropdown-menu dropdown-menu-left arrow arrow-left"; %>
 							<ul class="<%=class_dropdown_menu %>">
 								<li class="js-rename-popup js-dropdown-popup dropdown-popup">
 									<div class="clearfix text-center col-xs-12">
