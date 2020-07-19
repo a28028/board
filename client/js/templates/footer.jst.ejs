@@ -82,7 +82,7 @@ if (_.isEmpty(role_links.where({
 											<i class="icon-collapse"></i>
 										</span>
 									</a>
-									<ul role="menu" class="dropdown-menu js-dropdown-popup col-xs-12 js-show-add-boards-list">
+									<ul role="menu" class="dropdown-menu js-dropdown-popup  js-show-add-boards-list">
 										<li class="js-show-boards-list-response"></li>
 										<% if(!_.isEmpty(role_links.where({slug: "view_board_search"}))){ %>
 											<li class="clearfix js-qsearch-container js-boards-list-container">
@@ -183,7 +183,7 @@ if (_.isEmpty(role_links.where({
 														<i class="icon-collapse"></i>
 													</span>
 												</a>
-												<ul role="menu" class="dropdown-menu js-dropdown-popup col-xs-12 pre-scrollable vertical-scrollbar js-show-apps-list">
+												<ul role="menu" class="dropdown-menu js-dropdown-popup  pre-scrollable vertical-scrollbar js-show-apps-list">
 													<% if (!_.isEmpty(apps) && apps.length !== 0) {
 														_.each(apps, function(key,value) { 
 															if (!_.isUndefined(APPS) && APPS !== null && APPS.enabled_apps.indexOf(key.id) !== -1 && (key.price === 'Free' || (!_.isEmpty(role_links.where({
